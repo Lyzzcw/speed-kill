@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lyzzcw.work.speedkill.activity.infrastructure.mapper.ActivityMapper">
+  <resultMap id="BaseResultMap" type="lyzzcw.work.speedkill.activity.domain.entity.Activity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="activity_name" jdbcType="VARCHAR" property="activityName" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="activity_desc" jdbcType="VARCHAR" property="activityDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, activity_name, start_time, end_time, status, activity_desc
+  </sql>
+  <select id="getActivityById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from seckill_activity
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteActivityById" parameterType="java.lang.Long">
+    delete from seckill_activity
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="saveActivity" parameterType="lyzzcw.work.speedkill.activity.domain.entity.Activity">
+    insert into seckill_activity (id, activity_name, start_time, 
+      end_time, status, activity_desc
+      )
+    values (#{id,jdbcType=BIGINT}, #{activityName,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{activityDesc,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <update id="updateActivityById" parameterType="lyzzcw.work.speedkill.activity.domain.entity.Activity">
+    update seckill_activity
+    <set>
+      <if test="activityName != null">
+        activity_name = #{activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="activityDesc != null">
+        activity_desc = #{activityDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="getActivityList" parameterType="lyzzcw.work.speedkill.activity.domain.entity.Activity"
+          resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from seckill_activity
+    <where>
+      <if test="activityName != null">
+       and activity_name = #{activityName,jdbcType=VARCHAR}
+      </if>
+      <if test="startTime != null">
+        and start_time >= #{startTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="endTime != null">
+        and end_time &lt;= #{endTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="status != null">
+        and status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="activityDesc != null">
+        and activity_desc = #{activityDesc,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

@@ -1,0 +1,95 @@
+version: '3.2'
+
+networks:
+  binghe-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
+
+volumes:
+  prometheus_data: {}
+services:
+  mysql5.7:
+    image: mysql:5.7
+    container_name: mysql5.7
+    volumes:
+      - D:/docker/speed-kill/environment/data/db_data:/var/lib/mysql
+      - D:/docker/speed-kill/environment/config/mysql/init:/docker-entrypoint-initdb.d/
+    command: [
+        '--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_unicode_ci',
+        '--default-time-zone=+8:00'
+    ]
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: lyzzcw
+      MYSQL_USER: lyzzcw
+      MYSQL_PASSWORD: lyzzcw
+    ports:
+      - 3306:3306
+    networks:
+      binghe-network:
+        ipv4_address: 172.21.0.2
+  redis:
+    container_name: redis
+    image: redis:6.0
+    ports:
+      - 6379:6379
+    networks:
+      binghe-network:
+        ipv4_address: 172.21.0.3
+  sentinel:
+    image: bladex/sentinel-dashboard
+    container_name: sentinel
+    ports:
+      - 8858:8858
+    networks:
+      binghe-network:
+        ipv4_address: 172.21.0.5
+  nacos:
+    image: nacos/nacos-server:2.0.3
+    container_name: nacos-standalone-mysql
+    env_file:
+      - D:/docker/speed-kill/environment/config/nacos/nacos-standlone-mysql.env
+    volumes:
+      - D:/docker/speed-kill/environment/data/nacos_logs/:/home/nacos/logs
+      - D:/docker/speed-kill/environment/config/nacos/custom.properties:/home/nacos/init.d/custom.properties
+    ports:
+      - 8848:8848
+      - 9848:9848
+      - 9555:9555
+    depends_on:
+      - mysql5.7
+    #    restart: on-failure
+    networks:
+      binghe-network:
+        ipv4_address: 172.21.0.4
+  seata-server:
+    image: seataio/seata-server:1.6.1
+    hostname: seata-server
+    container_name: seate-server
+    ports:
+      - "7091:7091"
+      - "8091:8091"
+    depends_on:
+      - mysql5.7
+      - nacos
+    environment:
+      # 注册到nacos上的ip。客户端将通过该ip访问seata服务
+      - SEATA_IP=127.0.0.1
+      #- SEATA_PORT=8091
+      #- STORE_MODE=db
+    volumes:
+      # - "/usr/share/zoneinfo/Asia/Shanghai:/etc/localtime"        #设置系统时区
+      # - "/usr/share/zoneinfo/Asia/Shanghai:/etc/timezone"  #设置时区
+      - D:/docker/speed-kill/environment/config/seata/mysql-connector-java-5.1.35.jar:/seata-server/libs/mysql-connector-java-5.1.35.jar
+      - D:/docker/speed-kill/environment/config/seata/conf/application.yml:/seata-server/resources/application.yml
+      - D:/docker/speed-kill/environment/data/seata/logs:/root/logs
+    networks:
+      binghe-network:
+        ipv4_address: 172.21.0.6
+
+
+
+

@@ -1,0 +1,48 @@
+version: '3.2'
+
+networks:
+  mq-network:
+    driver: bridge
+
+services:
+  rmqnamesrv:
+    image: apache/rocketmq:4.9.0
+    container_name: rmqnamesrv
+    ports:
+      - 9876:9876
+    volumes:
+      - D:/docker/rocketmq/logs:/home/rocketmq/logs
+      - D:/docker/rocketmq/store:/home/rocketmq/store
+    command: sh mqnamesrv
+    networks:
+      - mq-network
+  rmqbroker:
+    image: apache/rocketmq:4.9.0
+    container_name: rmqbroker
+    ports:
+      - 10909:10909
+      - 10911:10911
+      - 10912:10912
+    volumes:
+      - D:/docker/rocketmq/logs:/home/rocketmq/logs
+      - D:/docker/rocketmq/store:/home/rocketmq/store
+      - D:/docker/rocketmq/broker.conf:/home/rocketmq/rocketmq-4.9.0/conf/broker.conf
+    command: sh mqbroker -n rmqnamesrv:9876 -c ../conf/broker.conf autoCreateTopicEnable=true &
+    depends_on:
+      - rmqnamesrv
+    environment:
+      JAVA_OPT_EXT: "-server -Xms256m -Xmx256m -Xmn128m"
+    networks:
+      - mq-network
+  rmqconsole:
+    image: styletang/rocketmq-console-ng:latest
+    container_name: rocketmq-console
+    ports:
+      - 8076:8080
+    depends_on:
+      - rmqnamesrv
+    environment:
+      - JAVA_OPTS= -Dlogging.level.root=info  -Drocketmq.namesrv.addr=rmqnamesrv:9876
+      - Dcom.rocketmq.sendMessageWithVIPChannel=false
+    networks:
+      - mq-network

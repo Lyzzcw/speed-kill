@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lyzzcw.work.speedkill.order.infrastructure.mapper.OrderMapper">
+  <resultMap id="BaseResultMap" type="lyzzcw.work.speedkill.order.domain.entity.Order">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="goods_id" jdbcType="BIGINT" property="goodsId" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="activity_price" jdbcType="DECIMAL" property="activityPrice" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="order_price" jdbcType="DECIMAL" property="orderPrice" />
+    <result column="activity_id" jdbcType="BIGINT" property="activityId" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, goods_id, goods_name, activity_price, quantity, order_price, activity_id, 
+    status, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from seckill_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from seckill_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="lyzzcw.work.speedkill.order.domain.entity.Order">
+    insert into seckill_order (id, user_id, goods_id, 
+      goods_name, activity_price, quantity, 
+      order_price, activity_id, status, 
+      create_time)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{goodsId,jdbcType=BIGINT}, 
+      #{goodsName,jdbcType=VARCHAR}, #{activityPrice,jdbcType=DECIMAL}, #{quantity,jdbcType=INTEGER}, 
+      #{orderPrice,jdbcType=DECIMAL}, #{activityId,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="lyzzcw.work.speedkill.order.domain.entity.Order">
+    insert into seckill_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="goodsName != null">
+        goods_name,
+      </if>
+      <if test="activityPrice != null">
+        activity_price,
+      </if>
+      <if test="quantity != null">
+        quantity,
+      </if>
+      <if test="orderPrice != null">
+        order_price,
+      </if>
+      <if test="activityId != null">
+        activity_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="activityPrice != null">
+        #{activityPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="quantity != null">
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="orderPrice != null">
+        #{orderPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="activityId != null">
+        #{activityId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="lyzzcw.work.speedkill.order.domain.entity.Order">
+    update seckill_order
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="goodsName != null">
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="activityPrice != null">
+        activity_price = #{activityPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="orderPrice != null">
+        order_price = #{orderPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="activityId != null">
+        activity_id = #{activityId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="lyzzcw.work.speedkill.order.domain.entity.Order">
+    update seckill_order
+    set user_id = #{userId,jdbcType=BIGINT},
+      goods_id = #{goodsId,jdbcType=BIGINT},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      activity_price = #{activityPrice,jdbcType=DECIMAL},
+      quantity = #{quantity,jdbcType=INTEGER},
+      order_price = #{orderPrice,jdbcType=DECIMAL},
+      activity_id = #{activityId,jdbcType=BIGINT},
+      status = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+
+  <insert id="saveOrder" parameterType="lyzzcw.work.speedkill.order.domain.entity.Order">
+    insert into seckill_order ( <include refid="Base_Column_List"/> )
+    values (#{id}, #{userId}, #{goodsId}, #{goodsName}, #{activityPrice}, #{quantity}, #{orderPrice}, #{activityId}, #{status}, #{createTime})
+  </insert>
+
+  <select id="getOrderByUserId" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from seckill_order where user_id = #{userId}
+  </select>
+
+  <select id="getOrderByActivityId" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from seckill_order where activity_id = #{activityId}
+  </select>
+</mapper>

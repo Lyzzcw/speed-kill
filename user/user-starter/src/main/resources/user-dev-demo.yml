@@ -1,0 +1,57 @@
+#tomcat
+server:
+  port: 8901
+  servlet:
+    context-path: /
+  tomcat:
+    accept-count: 1000
+    threads:
+      max: 800
+      min-spare: 100
+#MyBatis
+#数据库连接配置
+jdbc:
+  url: jdbc:mysql://127.0.0.1:3306/seckill_user?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useSSL=false&serverTimezone=UTC
+  username: root
+  password: root
+  initialSize: 5
+  minIdle: 10
+  maxActive: 30
+  maxWait: 60000
+  testWhileIdle: true
+  timeBetweenEvictionRunsMillis: 10000
+  testOnBorrow: false
+  testOnReturn: false
+  validationQuery: select 1
+  dbType: mysql
+  filters: stat
+mybatis:
+  mapper-locations: classpath*:/mapper/*.xml
+  type-aliases-package: lyzzcw.work.speedkill.user.domain.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  scanpackages: lyzzcw.work.speedkill.user.infrastructure.mapper
+#pageHelper
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+#RocketMQ
+rocketmq:
+  enabled: false
+  name-server:
+    address: localhost:9876
+  group:
+    updateCache: updateCache_user_group
+  topic:
+    updateCache: updateCache_user_topic
+#LOG
+log:
+  level: DEBUG
+logging:
+  config: classpath:logback-spring.xml
+#防超卖控制方式
+place:
+  order:
+    #1.db 基于mysql update行锁 2.lua redis lua脚本 3.lock redission锁 4，watch redis乐观锁
+    type: watch
