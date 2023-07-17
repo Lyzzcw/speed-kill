@@ -19,4 +19,8 @@ public class Constant {
 
     //商品库存 -> cache key prefix
     public static final String GOODS_STOCK_CACHE_KEY_PREFIX = "GOODS_STOCK_CACHE_KEY_";
+
+    //本地订单事务 -> cache key prefix
+    public static final String LOCAL_TRANSACTION_ORDER_KEY_PREFIX = "LOCAL_TRANSACTION_ORDER_CACHE_KEY_";
+
 }

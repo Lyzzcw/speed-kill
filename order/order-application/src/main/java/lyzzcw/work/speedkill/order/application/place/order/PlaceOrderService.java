@@ -19,6 +19,7 @@ import lyzzcw.work.component.common.HttpUtils.exception.BaseException;
 import lyzzcw.work.component.common.IDUtils.SnowflakeIdWorker;
 import lyzzcw.work.speedkill.goods.domain.entity.Goods;
 import lyzzcw.work.speedkill.goods.domain.enums.GoodsStatus;
+import lyzzcw.work.speedkill.order.application.listener.message.TxMessage;
 import lyzzcw.work.speedkill.order.domain.constant.HttpCode;
 import lyzzcw.work.speedkill.order.domain.convert.OrderConverter;
 import lyzzcw.work.speedkill.order.domain.dto.OrderDTO;
@@ -84,4 +85,8 @@ public interface PlaceOrderService {
     }
 
     Long initGoodsStock(String goods,int stock);
+
+    default void saveOrderInTransaction(TxMessage txmessage){
+
+    }
 }
