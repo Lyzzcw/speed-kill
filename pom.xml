@@ -15,6 +15,7 @@
         <module>activity</module>
         <module>dubbo-interfaces</module>
         <module>stock</module>
+        <module>template</module>
     </modules>
 
     <properties>
