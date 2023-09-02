@@ -1,7 +1,7 @@
 version: '3.2'
 
 networks:
-  binghe-network:
+  lzy-network:
     driver: bridge
     ipam:
       config:
@@ -29,7 +29,7 @@ services:
     ports:
       - 3306:3306
     networks:
-      binghe-network:
+      lzy-network:
         ipv4_address: 172.21.0.2
   redis:
     container_name: redis
@@ -37,7 +37,7 @@ services:
     ports:
       - 6379:6379
     networks:
-      binghe-network:
+      lzy-network:
         ipv4_address: 172.21.0.3
   sentinel:
     image: bladex/sentinel-dashboard
@@ -45,7 +45,7 @@ services:
     ports:
       - 8858:8858
     networks:
-      binghe-network:
+      lzy-network:
         ipv4_address: 172.21.0.5
   nacos:
     image: nacos/nacos-server:2.0.3
@@ -63,7 +63,7 @@ services:
       - mysql5.7
     #    restart: on-failure
     networks:
-      binghe-network:
+      lzy-network:
         ipv4_address: 172.21.0.4
   seata-server:
     image: seataio/seata-server:1.6.1
@@ -87,7 +87,7 @@ services:
       - D:/docker/speed-kill/environment/config/seata/conf/application.yml:/seata-server/resources/application.yml
       - D:/docker/speed-kill/environment/data/seata/logs:/root/logs
     networks:
-      binghe-network:
+      lzy-network:
         ipv4_address: 172.21.0.6
 
 

@@ -14,6 +14,7 @@
         <module>order</module>
         <module>activity</module>
         <module>dubbo-interfaces</module>
+        <module>stock</module>
     </modules>
 
     <properties>
@@ -39,6 +40,7 @@
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <docker.image.prefix>seckill</docker.image.prefix>
         <logback.version>1.2.6</logback.version>
+        <sharding.jdbc.version>4.1.1</sharding.jdbc.version>
     </properties>
 
     <dependencyManagement>
@@ -294,6 +296,13 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
+        </dependency>
+
+        <!-- sharding-->
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+            <version>${sharding.jdbc.version}</version>
         </dependency>
     </dependencies>
 
