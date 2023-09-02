@@ -33,6 +33,29 @@ spring:
           - dataId: seata-config.yml
             group: DEFAULT_GROUP
             refresh: false
+    sentinel:
+      datasource:
+        ds1:
+          nacos:
+            data-id: ACTIVITY-SENTINEL-FLOW-CONFIGURATION
+            data-type: json
+            group-id: DEFAULT_GROUP
+            namespace: 8649f7ce-e4ee-4e43-b6b4-901076e2a581
+            rule-type: flow
+            server-addr: 127.0.0.1:8848
+        ds2:
+          nacos:
+            data-id: ACTIVITY-SENTINEL-FLOW-CONFIGURATION
+            data-type: json
+            group-id: DEFAULT_GROUP
+            namespace: 8649f7ce-e4ee-4e43-b6b4-901076e2a581
+            rule-type: degrade
+            server-addr: 127.0.0.1:8848
+      eager: true
+      transport:
+        dashboard: 127.0.0.1:8000
+        port: 9991
+#        clientIp: 127.0.0.1
 dubbo:
   application:
     name: ${spring.application.name}

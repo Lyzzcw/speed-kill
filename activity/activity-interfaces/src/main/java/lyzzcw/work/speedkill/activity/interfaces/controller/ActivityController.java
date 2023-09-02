@@ -15,6 +15,7 @@
  */
 package lyzzcw.work.speedkill.activity.interfaces.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import lombok.RequiredArgsConstructor;
 import lyzzcw.work.component.common.HttpUtils.entity.Result;
 import lyzzcw.work.speedkill.activity.application.service.ActivityService;
@@ -53,6 +54,7 @@ public class ActivityController {
      * list activity
      */
     @RequestMapping(value = "/getActivityList", method = {RequestMethod.GET,RequestMethod.POST})
+    @SentinelResource(value = "QUEUE-DATA-FLOW")
     public Result<List<ActivityVO>> getActivityList(@RequestBody ActivityDTO activityDTO){
 
         List<Activity> activityList = activityService.getActivityList(

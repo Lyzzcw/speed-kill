@@ -39,14 +39,15 @@ services:
     networks:
       lzy-network:
         ipv4_address: 172.21.0.3
-  sentinel:
-    image: bladex/sentinel-dashboard
-    container_name: sentinel
-    ports:
-      - 8858:8858
-    networks:
-      lzy-network:
-        ipv4_address: 172.21.0.5
+#  容器内访问宿主机存在网段配置问题，暂时在宿主机搭建sentinel
+#  sentinel:
+#    image: bladex/sentinel-dashboard
+#    container_name: sentinel
+#    ports:
+#      - 8858:8858
+#    networks:
+#      lzy-network:
+#        ipv4_address: 172.21.0.5
   nacos:
     image: nacos/nacos-server:2.0.3
     container_name: nacos-standalone-mysql

@@ -42,6 +42,7 @@
         <docker.image.prefix>seckill</docker.image.prefix>
         <logback.version>1.2.6</logback.version>
         <sharding.jdbc.version>4.1.1</sharding.jdbc.version>
+        <sentinel.version>1.8.0</sentinel.version>
     </properties>
 
     <dependencyManagement>
@@ -76,6 +77,21 @@
                 <groupId>io.seata</groupId>
                 <artifactId>seata-spring-boot-starter</artifactId>
                 <version>${seata.version}</version>
+            </dependency>
+
+            <!-- 这里只约定版本，各组件 依赖自行引入-->
+            <!-- sharding-->
+            <dependency>
+                <groupId>org.apache.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+                <version>${sharding.jdbc.version}</version>
+            </dependency>
+
+            <!-- sentinel -->
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-datasource-nacos</artifactId>
+                <version>${sentinel.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -297,13 +313,6 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
-        </dependency>
-
-        <!-- sharding-->
-        <dependency>
-            <groupId>org.apache.shardingsphere</groupId>
-            <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
-            <version>${sharding.jdbc.version}</version>
         </dependency>
     </dependencies>
 
