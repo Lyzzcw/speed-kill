@@ -16,6 +16,7 @@
         <module>dubbo-interfaces</module>
         <module>stock</module>
         <module>template</module>
+        <module>ratelimiter</module>
     </modules>
 
     <properties>

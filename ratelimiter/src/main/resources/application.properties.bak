@@ -1,0 +1,4 @@
+#rate limiter
+rate.limit.local.enabled=true
+rate.limit.local.default.permitsPerSecond=1
+rate.limit.local.default.timeout=0
