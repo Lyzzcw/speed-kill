@@ -17,6 +17,7 @@
         <module>stock</module>
         <module>template</module>
         <module>ratelimiter</module>
+        <module>gateway</module>
     </modules>
 
     <properties>
@@ -92,6 +93,11 @@
             <dependency>
                 <groupId>com.alibaba.csp</groupId>
                 <artifactId>sentinel-datasource-nacos</artifactId>
+                <version>${sentinel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.csp</groupId>
+                <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
                 <version>${sentinel.version}</version>
             </dependency>
         </dependencies>
