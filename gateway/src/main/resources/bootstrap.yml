@@ -6,6 +6,7 @@ spring:
   main:
     #gateway
     web-application-type: reactive
+    allow-bean-definition-overriding: true
   cloud:
     nacos:
       discovery:
@@ -34,6 +35,12 @@ spring:
           - dataId: seata-config.yml
             group: DEFAULT_GROUP
             refresh: false
+    sentinel:
+      eager: true
+      web-context-unify: false
+      transport:
+        dashboard: 127.0.0.1:8000
+        port: 9991
 management:
   endpoints:
     web:
