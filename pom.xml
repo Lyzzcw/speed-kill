@@ -45,6 +45,7 @@
         <logback.version>1.2.6</logback.version>
         <sharding.jdbc.version>4.1.1</sharding.jdbc.version>
         <sentinel.version>1.8.0</sentinel.version>
+        <zipkin.version>2.2.8.RELEASE</zipkin.version>
     </properties>
 
     <dependencyManagement>
@@ -177,11 +178,16 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
-        <!-- sleuth-->
+        <!-- sleuth+zipkin-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+            <version>${zipkin.version}</version>
         </dependency>
+        <!--<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>-->
 
         <!-- mybatis start-->
         <dependency>

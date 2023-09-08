@@ -35,6 +35,9 @@ spring:
           - dataId: seata-config.yml
             group: DEFAULT_GROUP
             refresh: false
+          - dataId: sleuth-config.yml
+            group: DEFAULT_GROUP
+            refresh: false
     sentinel:
       eager: true
       web-context-unify: false

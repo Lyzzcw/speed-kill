@@ -36,6 +36,9 @@ spring:
           - dataId: dubbo-config.yml
             group: DEFAULT_GROUP
             refresh: false
+          - dataId: sleuth-config.yml
+            group: DEFAULT_GROUP
+            refresh: false
 management:
   endpoints:
     web:
