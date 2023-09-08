@@ -92,13 +92,13 @@ public class GatewayConfig {
         ApiDefinition api1 = new ApiDefinition("user_api1")
                 .setPredicateItems(new HashSet<ApiPredicateItem>() {{
                     // 以/server-user/user/api1 开头的请求
-                    add(new ApiPathPredicateItem().setPattern("/seckill-user/user/api1/**").
+                    add(new ApiPathPredicateItem().setPattern("/speedkill/user/api1/**").
                             setMatchStrategy(SentinelGatewayConstants.URL_MATCH_STRATEGY_PREFIX));
                 }});
         ApiDefinition api2 = new ApiDefinition("user_api2")
                 .setPredicateItems(new HashSet<ApiPredicateItem>() {{
                     // 以/server-user/user/api2/demo1 完成的url路径匹配
-                    add(new ApiPathPredicateItem().setPattern("/seckill-user/user/api2/demo1"));
+                    add(new ApiPathPredicateItem().setPattern("/speedkillr/user/api2/demo1"));
                 }});
         definitions.add(api1);
         definitions.add(api2);
