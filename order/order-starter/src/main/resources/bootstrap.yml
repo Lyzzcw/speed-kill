@@ -33,17 +33,9 @@ spring:
           - dataId: seata-config.yml
             group: DEFAULT_GROUP
             refresh: false
-dubbo:
-  application:
-    name: ${spring.application.name}
-    qos-enable: false
-  registry:
-    address: nacos://127.0.0.1:8848
-    parameters:
-      namespace: ${spring.cloud.nacos.config.namespace}
-  protocol:
-    name: dubbo
-    port: -1
+          - dataId: dubbo-config.yml
+            group: DEFAULT_GROUP
+            refresh: false
 management:
   endpoints:
     web:

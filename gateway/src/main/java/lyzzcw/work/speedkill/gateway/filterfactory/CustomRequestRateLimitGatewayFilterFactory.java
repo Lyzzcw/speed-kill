@@ -1,4 +1,4 @@
-package lyzzcw.work.speedkill.gateway.filter;
+package lyzzcw.work.speedkill.gateway.filterfactory;
 
 import com.alibaba.fastjson2.JSON;
 import com.google.common.cache.Cache;

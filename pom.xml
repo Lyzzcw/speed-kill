@@ -177,6 +177,12 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
+        <!-- sleuth-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+
         <!-- mybatis start-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
