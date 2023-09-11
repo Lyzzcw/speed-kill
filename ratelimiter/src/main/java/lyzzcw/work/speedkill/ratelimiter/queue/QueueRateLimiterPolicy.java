@@ -16,7 +16,8 @@
 package lyzzcw.work.speedkill.ratelimiter.queue;
 
 
-import lyzzcw.work.component.common.HttpUtils.exception.BaseException;
+
+import lyzzcw.work.component.common.http.exception.BaseException;
 
 import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;

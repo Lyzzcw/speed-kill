@@ -15,9 +15,9 @@
  */
 package lyzzcw.work.speedkill.goods.infrastructure.exception;
 
-import lyzzcw.work.component.common.HttpUtils.constant.status.BaseStatusCode;
-import lyzzcw.work.component.common.HttpUtils.entity.Result;
-import lyzzcw.work.component.common.HttpUtils.exception.BaseException;
+import lyzzcw.work.component.common.http.constant.status.BaseStatusCode;
+import lyzzcw.work.component.common.http.entity.Result;
+import lyzzcw.work.component.common.http.exception.BaseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ExceptionHandler;

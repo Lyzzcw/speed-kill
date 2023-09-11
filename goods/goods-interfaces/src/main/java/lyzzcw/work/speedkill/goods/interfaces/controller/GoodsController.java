@@ -16,8 +16,8 @@
 package lyzzcw.work.speedkill.goods.interfaces.controller;
 
 import lombok.RequiredArgsConstructor;
-import lyzzcw.work.component.common.HttpUtils.entity.Result;
 
+import lyzzcw.work.component.common.http.entity.Result;
 import lyzzcw.work.speedkill.goods.application.service.GoodsService;
 import lyzzcw.work.speedkill.goods.domain.convert.GoodsConverter;
 import lyzzcw.work.speedkill.goods.domain.dto.GoodsDTO;

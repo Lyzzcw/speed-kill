@@ -2,7 +2,7 @@ package lyzzcw.work.speedkill.stock.application.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lyzzcw.work.component.common.HttpUtils.exception.BaseException;
+import lyzzcw.work.component.common.http.exception.BaseException;
 import lyzzcw.work.component.redis.lock.DistributedLock;
 import lyzzcw.work.component.redis.lock.factory.DistributedLockFactory;
 import lyzzcw.work.speedkill.stock.application.service.StockBucketArrangementService;

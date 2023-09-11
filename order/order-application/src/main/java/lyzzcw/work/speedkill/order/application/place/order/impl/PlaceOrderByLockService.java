@@ -3,7 +3,7 @@ package lyzzcw.work.speedkill.order.application.place.order.impl;
 import com.alibaba.fastjson.JSONObject;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lyzzcw.work.component.common.HttpUtils.exception.BaseException;
+import lyzzcw.work.component.common.http.exception.BaseException;
 import lyzzcw.work.component.redis.cache.redis.RedisCache;
 import lyzzcw.work.component.redis.lock.DistributedLock;
 import lyzzcw.work.component.redis.lock.factory.DistributedLockFactory;

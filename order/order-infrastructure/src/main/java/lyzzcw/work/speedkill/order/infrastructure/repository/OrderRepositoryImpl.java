@@ -16,7 +16,7 @@
 package lyzzcw.work.speedkill.order.infrastructure.repository;
 
 import lombok.RequiredArgsConstructor;
-import lyzzcw.work.component.common.HttpUtils.exception.BaseException;
+import lyzzcw.work.component.common.http.exception.BaseException;
 import lyzzcw.work.speedkill.order.domain.constant.HttpCode;
 import lyzzcw.work.speedkill.order.domain.entity.Order;
 import lyzzcw.work.speedkill.order.domain.repository.OrderRepository;

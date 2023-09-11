@@ -16,16 +16,13 @@
 package lyzzcw.work.speedkill.order.application.place.order.impl;
 
 import cn.hutool.core.util.BooleanUtil;
-import cn.hutool.core.util.NumberUtil;
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson2.JSON;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import lyzzcw.work.component.common.IDUtils.SnowflakeIdWorker;
+import lyzzcw.work.component.common.id.SnowflakeIdWorker;
 import lyzzcw.work.component.redis.cache.redis.RedisCache;
 import lyzzcw.work.component.redis.cache.redis.lua.stock.RedisLuaService;
-import lyzzcw.work.speedkill.dubbo.interfaces.goods.GoodsDubboService;
 import lyzzcw.work.speedkill.goods.domain.entity.Goods;
 import lyzzcw.work.speedkill.order.application.listener.message.TxMessage;
 import lyzzcw.work.speedkill.order.application.listener.provider.TransactionOrderProvider;
@@ -34,7 +31,6 @@ import lyzzcw.work.speedkill.order.domain.constant.Constant;
 import lyzzcw.work.speedkill.order.domain.dto.OrderDTO;
 import lyzzcw.work.speedkill.order.domain.entity.Order;
 import lyzzcw.work.speedkill.order.domain.repository.OrderRepository;
-import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

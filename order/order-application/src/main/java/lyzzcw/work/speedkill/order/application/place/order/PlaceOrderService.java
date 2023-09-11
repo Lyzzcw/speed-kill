@@ -15,8 +15,8 @@
  */
 package lyzzcw.work.speedkill.order.application.place.order;
 
-import lyzzcw.work.component.common.HttpUtils.exception.BaseException;
-import lyzzcw.work.component.common.IDUtils.SnowflakeIdWorker;
+import lyzzcw.work.component.common.http.exception.BaseException;
+import lyzzcw.work.component.common.id.SnowflakeIdWorker;
 import lyzzcw.work.speedkill.goods.domain.entity.Goods;
 import lyzzcw.work.speedkill.goods.domain.enums.GoodsStatus;
 import lyzzcw.work.speedkill.order.application.listener.message.TxMessage;

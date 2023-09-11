@@ -2,7 +2,7 @@ package lyzzcw.work.speedkill.order.application.place.order.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lyzzcw.work.component.common.HttpUtils.exception.BaseException;
+import lyzzcw.work.component.common.http.exception.BaseException;
 import lyzzcw.work.speedkill.dubbo.interfaces.goods.GoodsDubboService;
 import lyzzcw.work.speedkill.goods.domain.entity.Goods;
 import lyzzcw.work.speedkill.order.application.place.order.PlaceOrderService;

@@ -17,7 +17,7 @@ package lyzzcw.work.speedkill.activity.interfaces.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import lombok.RequiredArgsConstructor;
-import lyzzcw.work.component.common.HttpUtils.entity.Result;
+import lyzzcw.work.component.common.http.entity.Result;
 import lyzzcw.work.speedkill.activity.application.service.ActivityService;
 import lyzzcw.work.speedkill.activity.domain.convert.ActivityConverter;
 import lyzzcw.work.speedkill.activity.domain.dto.ActivityDTO;

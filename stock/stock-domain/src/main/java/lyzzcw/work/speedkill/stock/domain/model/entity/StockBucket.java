@@ -16,7 +16,8 @@
 package lyzzcw.work.speedkill.stock.domain.model.entity;
 
 
-import lyzzcw.work.component.common.IDUtils.SnowflakeIdWorker;
+
+import lyzzcw.work.component.common.id.SnowflakeIdWorker;
 
 import java.io.Serializable;
 

@@ -16,7 +16,7 @@
 package lyzzcw.work.speedkill.activity.infrastructure.repository;
 
 import lombok.RequiredArgsConstructor;
-import lyzzcw.work.component.common.HttpUtils.exception.BaseException;
+import lyzzcw.work.component.common.http.exception.BaseException;
 import lyzzcw.work.speedkill.activity.domain.constant.HttpCode;
 import lyzzcw.work.speedkill.activity.domain.entity.Activity;
 import lyzzcw.work.speedkill.activity.domain.repository.ActivityRepository;

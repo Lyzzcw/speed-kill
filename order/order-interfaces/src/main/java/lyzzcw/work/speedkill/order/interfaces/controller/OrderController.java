@@ -16,8 +16,8 @@
 package lyzzcw.work.speedkill.order.interfaces.controller;
 
 import lombok.RequiredArgsConstructor;
-import lyzzcw.work.component.common.HttpUtils.entity.Result;
 
+import lyzzcw.work.component.common.http.entity.Result;
 import lyzzcw.work.speedkill.order.application.place.order.PlaceOrderService;
 import lyzzcw.work.speedkill.order.application.service.OrderService;
 import lyzzcw.work.speedkill.order.domain.convert.OrderConverter;

@@ -6,7 +6,7 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.util.concurrent.RateLimiter;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import lyzzcw.work.component.common.HttpUtils.entity.Result;
+import lyzzcw.work.component.common.http.entity.Result;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
