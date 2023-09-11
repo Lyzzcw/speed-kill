@@ -6,8 +6,8 @@ server {
         index  index.html index.htm;
     }
     location ^~ /speedkill {
-        #limit_req zone=limit_by_ip burst=1 nodelay;
-        limit_req zone=limit_by_user burst=1 nodelay;
+        limit_req zone=limit_by_ip burst=1 nodelay;
+        #limit_req zone=limit_by_user burst=1 nodelay;
         proxy_pass http://real_server;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
