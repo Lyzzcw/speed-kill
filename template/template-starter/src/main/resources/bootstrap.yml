@@ -2,7 +2,7 @@ spring:
   application:
     name: template
   profiles:
-    active: test
+    active: development
 management:
   endpoints:
     web:
