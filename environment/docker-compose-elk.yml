@@ -1,93 +1,52 @@
 version: '3.2'
+
+networks:
+  elk-network:
+    driver: bridge
+
+volumes:
+  prometheus_data: {}
 services:
   elasticsearch:
     image: elasticsearch:7.14.2
     container_name: elasticsearch
-    user: root
-    environment:
-      - "cluster.name=elasticsearch" #设置集群名称为elasticsearch
-      - "discovery.type=single-node" #以单一节点模式启动
     volumes:
-      - /mydata/elasticsearch/plugins:/usr/share/elasticsearch/plugins #插件文件挂载
-      - /mydata/elasticsearch/data:/usr/share/elasticsearch/data #数据文件挂载
-      - /etc/localtime:/etc/localtime:ro
-      - /usr/share/zoneinfo:/usr/share/zoneinfo
+      - D:/docker/elk/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
-      - 9200:9200
-      - 9300:9300
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      discovery.type: single-node
     networks:
-      - elastic
+      - elk-network
 
   logstash:
     image: logstash:7.14.2
     container_name: logstash
-    environment:
-      - TZ=Asia/Shanghai
     volumes:
-      - /mydata/logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf #挂载logstash的配置文件
-    depends_on:
-      - elasticsearch #kibana在elasticsearch启动之后再启动
-    links:
-      - elasticsearch:es #可以用es这个域名访问elasticsearch服务
+      - D:/docker/elk/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - D:/docker/elk/pipeline:/usr/share/logstash/pipeline
     ports:
-      - 5044:5044
+      - "5044:5044"
+      - "5000:5000/tcp"
+      - "5000:5000/udp"
+      - "9600:9600"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
-      - elastic
+      - elk-network
+    depends_on:
+      - elasticsearch
 
   kibana:
     image: kibana:7.14.2
     container_name: kibana
-    links:
-      - elasticsearch:es #可以用es这个域名访问elasticsearch服务
-    depends_on:
-      - elasticsearch #kibana在elasticsearch启动之后再启动
-    environment:
-      - "elasticsearch.hosts=http://es:9200" #设置访问elasticsearch的地址
-      - /etc/localtime:/etc/localtime:ro
-      - /usr/share/zoneinfo:/usr/share/zoneinfo
-    ports:
-      - 5601:5601
-    networks:
-      - elastic
-
-  zookeeper:
-    image: wurstmeister/zookeeper
-    container_name: zookeeper
     volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - /mydata/zookeeper/data:/data
-      - /mydata/zookeeper/log:/datalog
-      - /usr/share/zoneinfo:/usr/share/zoneinfo
-    networks:
-      - elastic
+      - D:/docker/elk/kibana.yml:/usr/share/kibana/config/kibana.yml
     ports:
-      - "2181:2181"
-
-  kafka:
-    container_name: kafka
-    image: wurstmeister/kafka
+      - "5601:5601"
+    networks:
+      - elk-network
     depends_on:
-      - zookeeper
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /mydata/kafka:/kafka
-      - /etc/localtime:/etc/localtime:ro
-      - /usr/share/zoneinfo:/usr/share/zoneinfo
-    links:
-      - zookeeper
-    ports:
-      - "9092:9092"
-    networks:
-      - elastic
-    environment:
-      - KAFKA_LISTENERS=INTERNAL://kafka:9092, OUT://kafka:29092
-      - KAFKA_ADVERTISED_LISTENERS=INTERNAL://kafka:9092, OUT://kafka:29092
-      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=INTERNAL:PLAINTEXT,OUT:PLAINTEXT
-      - KAFKA_INTER_BROKER_LISTENER_NAME=OUT
-      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
-      - KAFKA_MESSAGE_MAX_BYTES=2000000
-      - KAFKA_CREATE_TOPICS=logs:1:1
-
-networks:
-  elastic:
-    driver: bridge
+      - elasticsearch

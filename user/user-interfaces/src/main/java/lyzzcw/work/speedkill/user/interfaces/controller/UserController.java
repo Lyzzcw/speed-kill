@@ -5,7 +5,7 @@ import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lyzzcw.work.component.common.HttpUtils.entity.Result;
+import lyzzcw.work.component.common.http.entity.Result;
 import lyzzcw.work.speedkill.user.application.service.UserService;
 import lyzzcw.work.speedkill.user.domain.convert.UserConverter;
 import lyzzcw.work.speedkill.user.domain.dto.UserDTO;

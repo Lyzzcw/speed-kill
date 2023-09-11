@@ -43,6 +43,7 @@
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <docker.image.prefix>seckill</docker.image.prefix>
         <logback.version>1.2.6</logback.version>
+        <logstash-logback.version>5.1</logstash-logback.version>
         <sharding.jdbc.version>4.1.1</sharding.jdbc.version>
         <sentinel.version>1.8.0</sentinel.version>
         <zipkin.version>2.2.8.RELEASE</zipkin.version>
@@ -332,6 +333,11 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash-logback.version}</version>
         </dependency>
     </dependencies>
 
