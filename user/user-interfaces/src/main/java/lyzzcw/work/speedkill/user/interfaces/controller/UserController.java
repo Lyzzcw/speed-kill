@@ -28,8 +28,11 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     final UserService userService;
+
     /**
-     * 测试系统
+     * 系统测试
+     * @param userName
+     * @return
      */
     @GetMapping( "/get")
     public Result<User> getUser(String userName){
@@ -41,6 +44,11 @@ public class UserController {
         return Result.ok(userService.getUserByUserName(userName));
     }
 
+    /**
+     * 登录
+     * @param userDTO
+     * @return
+     */
     @PostMapping( "/doLogin")
     public Result<UserVO> login(@RequestBody UserDTO userDTO){
         User user = UserConverter.INSTANCE.userDTO2User(userDTO);
