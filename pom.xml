@@ -15,14 +15,13 @@
         <module>activity</module>
         <module>dubbo-interfaces</module>
         <module>stock</module>
-        <module>template</module>
         <module>ratelimiter</module>
         <module>gateway</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.boot.version>2.6.13</spring.boot.version>
         <spring.cloud.alibaba.version>2021.0.5.0</spring.cloud.alibaba.version>
